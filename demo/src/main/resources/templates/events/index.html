@@ -7,6 +7,8 @@
 <body>
 <h1>All Events</h1>
 
+<nav th:replace="fragments :: navigation"></nav>
+
 <!-- if the thing called events is found but has nothing in it or is false then print no events.
  That's what this unless if statement is doing here.-->
 <p th:unless="${events} and  ${events.size()}"> No Events</p>
