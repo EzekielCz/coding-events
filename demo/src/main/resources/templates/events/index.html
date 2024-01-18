@@ -2,9 +2,20 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Coding Events</title>
 </head>
 <body>
+<h1>All Events</h1>
+
+<!-- if the thing called events is found but has nothing in it or is false then print no events.
+ That's what this unless if statement is doing here.-->
+<p th:unless="${events} and  ${events.size()}"> No Events</p>
+
+<ul>
+    <th:block th:each="event : ${events}">
+        <li th:text="${event}"></li>
+    </th:block>
+</ul>
 
 </body>
 </html>
