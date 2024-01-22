@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-
 <head th:replace="fragments :: head"></head>
-
 <body class="container">
 
 <h1>All Events</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
-
 <!-- if the thing called events is found but has nothing in it or is false then print no events.
  That's what this unless if statement is doing here.-->
 <p th:unless="${events} and  ${events.size()}"> No Events</p>
-
 <!--<ul>-->
 <table class="table table-striped">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Name</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tr th:each="event : ${events}">
-        <td th:text="${event}"></td>
+        <td th:text="${event.id}"></td>
+        <td th:text="${event.name}"></td>
+        <td th:text="${event.description}"></td>
     </tr>
 </table>
 <!--</ul>-->
-
 </body>
 </html>
