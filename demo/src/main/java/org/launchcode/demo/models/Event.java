@@ -1,5 +1,9 @@
 package org.launchcode.demo.models;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.util.Objects;
 
 public class Event {
@@ -7,12 +11,19 @@ public class Event {
     private int id;
     private static int nextId = 1;
 
+    @NotBlank
+    @Size(min = 3, max = 25, message = "Name must be between 3 and 25 characters long.")
     private String name;
+    @Size(max = 250, message = "Description is too long.")
     private String description;
 
-    public Event(String name, String description) {
+    @Email(message = "Invalid email, please try again")
+    private String contactEmail;
+
+    public Event(String name, String description, String contactEmail) {
         this.name = name;
         this.description = description;
+        this.contactEmail = contactEmail;
         this.id = nextId;
         nextId++;
     }
@@ -28,6 +39,15 @@ public class Event {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+
     public int getId() {
         return id;
     }
