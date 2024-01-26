@@ -21,10 +21,6 @@ public class EventController {
     @GetMapping
     public String displayAllEvents(Model model){
 //        List<String> events = new ArrayList<>();
-//        events.add("dooms Day");
-//        events.add("Zeta Ring");
-//        events.add("UNSC");
-//        events.add("Stalker");
 //        model.addAttribute("events", events);
         model.addAttribute("events", EventData.getALl());
         return "events/index";

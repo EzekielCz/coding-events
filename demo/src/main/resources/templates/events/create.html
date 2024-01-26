@@ -36,13 +36,13 @@
             <select th:field="${event.type}">
                 <option th:each="type : ${types}"
                         th:value="${type}"
-                        th:text="type.displayName">
+                        th:text="${type.displayName}">
                 </option>
             </select>
         </label>
     </div>
     <div class="form-group">
-        <input type="text" name="eventName" class="form-control">
+<!--        <input type="text" name="eventName" class="form-control">-->
     <input type="submit" value="Create Event" class="btn btn-success">
     </div>
 </form>
