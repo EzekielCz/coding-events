@@ -1,33 +1,54 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="https://www.thymeleaf.org/">-->
+<!--<head th:replace="fragments :: head"></head>-->
+<!--<body class="container">-->
+
+<!--<h1>All Events</h1>-->
+
+<!--<nav th:replace="fragments :: navigation"></nav>-->
+<!--&lt;!&ndash; if the thing called events is found but has nothing in it or is false then print no events.-->
+<!-- That's what this unless if statement is doing here.&ndash;&gt;-->
+<!--<p th:unless="${events} and  ${events.size()}"> No Events</p>-->
+<!--&lt;!&ndash;<ul>&ndash;&gt;-->
+<!--<table class="table table-striped">-->
+<!--    <thead>-->
+<!--        <tr>-->
+<!--            <th>Id</th>-->
+<!--            <th>Name</th>-->
+<!--            <th>Description</th>-->
+<!--            <th>Contact Email</th>-->
+<!--            <th>Category</th>-->
+<!--        </tr>-->
+<!--    </thead>-->
+<!--    <tr th:each="event : ${events}">-->
+<!--        <td th:text="${event.id}"></td>-->
+<!--        <td th:text="${event.name}"></td>-->
+<!--        <td th:text="${event.eventDetails.description}"></td>-->
+<!--        <td th:text="${event.eventDetails.contactEmail}"></td>-->
+<!--        <td th:text="${event.eventCategory.name}"></td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--&lt;!&ndash;</ul>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}"></head>
 <body class="container">
 
-<h1>All Events</h1>
+<header th:replace="~{fragments :: header}"></header>
 
-<nav th:replace="fragments :: navigation"></nav>
-<!-- if the thing called events is found but has nothing in it or is false then print no events.
- That's what this unless if statement is doing here.-->
-<p th:unless="${events} and  ${events.size()}"> No Events</p>
-<!--<ul>-->
 <table class="table table-striped">
     <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Contact Email</th>
-            <th>Type</th>
-        </tr>
+    <tr>
+        <th>Event Name</th>
+    </tr>
     </thead>
     <tr th:each="event : ${events}">
-        <td th:text="${event.id}"></td>
-        <td th:text="${event.name}"></td>
-        <td th:text="${event.description}"></td>
-        <td th:text="${event.contactEmail}"></td>
-        <td th:text="${event.type.displayName}"></td>
+        <td><a th:href="'/events/detail?eventId=' + ${event.id}" th:text="${event.name}"></a></td>
     </tr>
 </table>
-<!--</ul>-->
+
 </body>
 </html>
